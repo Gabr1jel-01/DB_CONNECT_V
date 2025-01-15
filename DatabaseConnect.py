@@ -39,8 +39,10 @@ def display_file_in_a_table(data_to_be_displayed):
     st.dataframe(data_to_be_displayed)
 
 with st.sidebar:
+    
     st.title("File:")
     file_uploader_dragNdrop = st.file_uploader("Choose a file to upload:")
+    st.divider()
     st.subheader("To download the latest table of readings simply click the :red[GET LATEST READINGS] button below")
     button_get_latest_readings = st.button("GET LATEST READINGS", type="primary", on_click=backend.data_extraction)
     
@@ -49,34 +51,33 @@ with st.sidebar:
 
 
     #region DOWNLOAD CUSTOM TIME AND DATE FROM THE TABLE
-
-    st.subheader("To download specific table of readings you need to choose the date and time")
-    st.subheader("Date of reading")
-
-    date_input_date_picker_from = st.date_input("From",
+    st.subheader("To download specific table of readings you need to choose the date and time:")
+    first_column, second_column = st.columns(2)
+    with first_column:
+        date_input_date_picker_from = st.date_input("From",
                                                 format="DD-MM-YYYY",
                                                 key="date_from",
                                                 value=st.session_state.date_from)
 
 
 
-    date_input_date_picker_to = st.date_input("To",
+        date_input_date_picker_to = st.date_input("To",
                                             format="DD-MM-YYYY",
                                             key="date_to",
                                             value=None)
 
-    st.subheader("Time of reading")
-
-    time_input_time_picker_from = st.time_input("From:",
+        
+    with second_column:
+        time_input_time_picker_from = st.time_input("From:",
                                                 key="time_from",
                                                 value=None)
                                                 
 
-    time_input_time_picker_to = st.time_input("To:",
+        time_input_time_picker_to = st.time_input("To:",
                                                 key="time_to",
                                                 value=None)
 
-    button_download = st.button("DOWNLOAD", type="primary")
+    button_download = st.button("DOWNLOAD", type="primary")    
 
 
     st.divider()
@@ -108,11 +109,3 @@ if file_uploader_dragNdrop is not None:
         
 else:
         st.warning('To start, please load a file', icon="⚠️")
-st.divider()
-
-
-    
-
-    
-
-    
