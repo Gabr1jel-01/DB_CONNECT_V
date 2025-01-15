@@ -1,0 +1,32 @@
+NAPRAVITI:
+
+[] Napraviti skidanje određenih podataka, u određeno vrijeme za određeni datum. Vrlo je bitno da se podatci uzeti iz tablice skidaju
+u nekom redu, znači ili ascending ili descending. To se mora specificirati dok se radi SQL Query upit jer ako se u upitu ne stavi taj filter
+podaci će se skidati nasumično te neće biti organizirani kako trebaju.
+[] Pitanje: skinuti cijelu tablicu pa onda prikazivati podatke po filtru ili prije skidanja podataka napraviti filter pa onda skinuti samo određene
+podatke.
+[] Filtere napraviti kao u Excelu. Treba sadržavati checkbox za sve varijable i glavni checkbox mora odraditi funkciju da se sve varijable odaberu
+ili ponište za odabir.
+[] Napraviti da se file prilikom preuzimanja automatski sprema na Windows C Download folder. Provjeriti dali je to foolproof za sva računala.
+[] Napraviti da se graf mijenja po filterima, također napraviti isto kao i u Excelu. - Trenutno graf pokazuje neke random podatke,  
+   trebam napravitri da prikazuje sve varijable koje su u skinutoj tablici. 
+[] Napraviti da tablica prikazuje podatke po filteru, također napraviti kao u Excelu.
+
+
+U PROCESU IZRADE:
+
+[...] Napravio Frontend do neke točke. Još se stvari dodaje tako da je sve podložno promjeni.
+[...] Branimir iz Probotike treba dodati mjerne jedinice pored svake varijable. (Anđelina zamolila).
+[...] Branimir iz Probotike treba dodati sekunde u mjerenju vremena Current_Time varijabla.
+[...] Darko treba napraviti mogućnost spajanja na IN Wifi kako bih mogli pristupiti serveru neovisno o tome gdje se postrojenje nalazi
+u Republici Hrvatskoj.
+
+NAPRAVLJENO:
+
+[x] Povezan GET LATEST READINGS gumb sa backendom. Prilikom pritiska gumb se spaja na Miscrosoft SQL server 
+te povlači svih 120 varijabli iz tablice.
+[x] Implementirano upozorenje ⚠️To start, please load a file.
+[x] Implementiran file uploader koji prikazuje podatke u tablici koji su mu predani.
+[x] Implementiran graf iz Pandas frameworka pošto je iz Streamlita graf štekao prilikom prikaza velike količine podataka.
+[x] Implementirana tablica koja pokazuje podatke skinute sa SQL servera.
+[x] Implementiran spinner koji se prikazuje sve dok se podaci skidaju sa servera te spremaju u .csv file.
