@@ -1,14 +1,14 @@
 NAPRAVITI:
 
-[] Napraviti skidanje određenih podataka, u određeno vrijeme za određeni datum. Vrlo je bitno da se podatci uzeti iz tablice skidaju
+[2] Napraviti skidanje određenih podataka, u određeno vrijeme za određeni datum. Vrlo je bitno da se podatci uzeti iz tablice skidaju
    u nekom redu, znači ili ascending ili descending. To se mora specificirati dok se radi SQL Query upit jer ako se u upitu ne stavi taj filter
    podaci će se skidati nasumično te neće biti organizirani kako trebaju.
-[] Filtere napraviti kao u Excelu. Treba sadržavati checkbox za sve varijable i glavni checkbox mora odraditi funkciju da se sve varijable odaberu
+[1] Filtere napraviti kao u Excelu. Treba sadržavati checkbox za sve varijable i glavni checkbox mora odraditi funkciju da se sve varijable odaberu
    ili ponište za odabir.
-[] Napraviti da se file prilikom preuzimanja automatski sprema na Windows C Download folder. Provjeriti dali je to foolproof za sva računala.
-[] Napraviti da se graf mijenja po filterima, također napraviti isto kao i u Excelu. - Trenutno graf pokazuje neke random podatke,  
+[3] Napraviti da se file prilikom preuzimanja automatski sprema na Windows C Download folder. Provjeriti dali je to foolproof za sva računala.
+[4] Napraviti da se graf mijenja po filterima, također napraviti isto kao i u Excelu. - Trenutno graf pokazuje neke random podatke,  
    trebam napravitri da prikazuje sve varijable koje su u skinutoj tablici. 
-[] Napraviti da tablica prikazuje podatke po filteru, također napraviti kao u Excelu.
+[4.1] Napraviti da tablica prikazuje podatke po filteru, također napraviti kao u Excelu.
 
 
 U PROCESU IZRADE:
