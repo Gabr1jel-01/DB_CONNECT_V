@@ -9,7 +9,9 @@ NAPRAVITI:
 [4] Napraviti da se graf mijenja po filterima, također napraviti isto kao i u Excelu. - Trenutno graf pokazuje neke random podatke,  
    trebam napravitri da prikazuje sve varijable koje su u skinutoj tablici. 
 [4.1] Napraviti da tablica prikazuje podatke po filteru, također napraviti kao u Excelu.
-
+[5] Promijeniti nazive varijabli. Trenutni nazivi nisu dobri za ono što nama. Dogovoriti se sa Filipom da napravimo kratki sastanak sa svima kako bi se sve dogovorili.
+[6] Za odredeno vrijeme i odredeni dan skidam cijelu tablicu. Nakon toga postoji filter na stranici i na osnovu onoga 
+    sto je oznaceno u tablici filtera prikazuje se u tablici.
 
 U PROCESU IZRADE:
 
