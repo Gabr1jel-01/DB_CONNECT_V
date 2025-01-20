@@ -23,6 +23,17 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+
+CHOSEN_PILLS = []
+
+SPECIFIC_DATE_FROM = ""
+SPECIFIC_TIME_FROM = ""
+SPECIFIC_DATE_TO = ""
+SPECIFIC_TIME_TO = ""
+
+SPECIFIC_QUERY = "zuzguzg"
+
+
     
 if "date_from" not in st.session_state:
     st.session_state.date_from = None
@@ -37,6 +48,25 @@ if "time_to" not in st.session_state:
 @st.cache_data
 def display_file_in_a_table(data_to_be_displayed):
     st.dataframe(data_to_be_displayed)
+
+def append_date_from():
+    SPECIFIC_DATE_FROM = st.session_state.date_from
+    print(SPECIFIC_DATE_FROM)
+
+def append_time_from():
+    SPECIFIC_TIME_FROM = st.session_state.time_from
+    print(SPECIFIC_TIME_FROM)
+
+def append_date_to():
+    SPECIFIC_DATE_TO = st.session_state.date_to
+    print(SPECIFIC_DATE_TO)
+
+def append_time_to():
+    SPECIFIC_TIME_TO = st.session_state.time_to
+    print(SPECIFIC_TIME_TO)
+
+
+
 
 with st.sidebar:
     
@@ -62,25 +92,29 @@ with st.sidebar:
         date_input_date_picker_from = st.date_input("From",
                                                 format="DD-MM-YYYY",
                                                 key="date_from",
-                                                value=st.session_state.date_from)
+                                                value=st.session_state.date_from,
+                                                on_change= append_date_from)
 
 
 
         date_input_date_picker_to = st.date_input("To",
                                             format="DD-MM-YYYY",
                                             key="date_to",
-                                            value=None)
+                                            value=None,
+                                            on_change= append_date_to)
 
         
     with second_column:
         time_input_time_picker_from = st.time_input("From:",
                                                 key="time_from",
-                                                value=None)
+                                                value=None,
+                                                on_change= append_time_from)
                                                 
 
         time_input_time_picker_to = st.time_input("To:",
                                                 key="time_to",
-                                                value=None)
+                                                value=None,
+                                                on_change= append_time_to)
     
 
     button_download = st.button("DOWNLOAD", type="primary")
@@ -89,6 +123,8 @@ with st.sidebar:
     #endregion
 
     st.write(st.session_state)
+
+
 
 if file_uploader_dragNdrop is not None:
     dataframe = pd.read_csv(file_uploader_dragNdrop)
@@ -218,7 +254,7 @@ with st.expander("Filters"):
                         ,"VSD_DP2_State"
                         ,"VSD_DP2_Freq"
                         ]
-        list_of_data_nineth_column = ["LT_Wet_Scrubber_Inlet"
+        list_of_data_ninth_column = ["LT_Wet_Scrubber_Inlet"
                         ,"FM_Volume_Flow"
                         ,"FM_Mass_Flow"
                         ,"VSD_HYD_State"
@@ -243,25 +279,27 @@ with st.expander("Filters"):
       
 
         with column1:
-            st.pills("a",selection_mode="multi",options=[item for item in list_of_data_first_column],label_visibility="hidden")
+            st.pills("a",selection_mode="multi",options=list_of_data_first_column,label_visibility="hidden",key="first_group_of_pills")
+            st.write(st.session_state.first_group_of_pills) # here I can see what pill has been chosen as it is appended to the session_state 
+                                                            # when clicked
         with column2:
-            st.pills("a",selection_mode="multi",options=[item for item in list_of_data_second_column],label_visibility="hidden")
+            st.pills("b",selection_mode="multi",options=list_of_data_second_column,label_visibility="hidden",key="second_group_of_pills")
         with column3:
-            st.pills("a",selection_mode="multi",options=[item for item in list_of_data_third_column],label_visibility="hidden")
+            st.pills("c",selection_mode="multi",options=list_of_data_third_column,label_visibility="hidden",key="third_group_of_pills")
         with column4:
-            st.pills("a",selection_mode="multi",options=[item for item in list_of_data_fourth_column],label_visibility="hidden")
+            st.pills("d",selection_mode="multi",options=list_of_data_fourth_column,label_visibility="hidden",key="fourth_group_of_pills")
         with column5:
-            st.pills("a",selection_mode="multi",options=[item for item in list_of_data_fift_column],label_visibility="hidden")
+            st.pills("f",selection_mode="multi",options=list_of_data_fift_column,label_visibility="hidden",key="fifth_group_of_pills")
         with column6:
-            st.pills("a",selection_mode="multi",options=[item for item in list_of_data_sixth_column],label_visibility="hidden")
+            st.pills("g",selection_mode="multi",options=list_of_data_sixth_column,label_visibility="hidden",key="sixth_group_of_pills")
         with column7:
-            st.pills("a",selection_mode="multi",options=[item for item in list_of_data_seventh_column],label_visibility="hidden")
+            st.pills("h",selection_mode="multi",options=list_of_data_seventh_column,label_visibility="hidden",key="seventh_group_of_pills")
         with column8:
-            st.pills("a",selection_mode="multi",options=[item for item in list_of_data_eighth_column],label_visibility="hidden")
+            st.pills("j",selection_mode="multi",options=list_of_data_eighth_column,label_visibility="hidden",key="eight_group_of_pills")
         with column9:
-            st.pills("a",selection_mode="multi",options=[item for item in list_of_data_nineth_column],label_visibility="hidden")
+            st.pills("k",selection_mode="multi",options=list_of_data_ninth_column,label_visibility="hidden",key="ninth_group_of_pills")
         with column10:
-            st.pills("a",selection_mode="multi",options=[item for item in list_of_data_tenth_column],label_visibility="hidden")
+            st.pills("l",selection_mode="multi",options=list_of_data_tenth_column,label_visibility="hidden",key="tenth_group_of_pills")
         st.divider()
         
         button_generate = st.button("GENERATE", type="primary")
