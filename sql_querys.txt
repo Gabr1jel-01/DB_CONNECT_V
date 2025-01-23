@@ -1,10 +1,28 @@
-
+1.
+--------------------------------------------------------------------------------------------------------------------------------------------
 THIS QUERY IS USED TO FETCH ALL DATA FROM THE TABLE (TIME IS ASCENDING AND EVERY DATA IS ORDERED BY TIME)
 
 query = """SELECT * FROM [IN23_Plant].[dbo].[General_Table] ORDER BY [Current_Time] ASC"""
+--------------------------------------------------------------------------------------------------------------------------------------------
 
-THIS QUERY IS USED TO FETCH DATA BETWEEN CERTAIN DATES AND HORUS/MINUTES OF READING
+2.
+--------------------------------------------------------------------------------------------------------------------------------------------
+THIS QUERY IS USED TO FETCH ALL DATA BETWEEN CERTAIN DATES AND HORUS/MINUTES OF READING
 
 SELECT *
 FROM [IN23_Plant].[dbo].[General_Table]
 WHERE Current_Time BETWEEN 'YYYY-MM-DD HH:MM' AND 'YYYY-MM-DD HH:MM';
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+3.
+--------------------------------------------------------------------------------------------------------------------------------------------
+THIS QUERY IS USED TO RETRIEVE SPECIFIC DATA FILTERED BY A FILTER THAT WAS MADE AND IT USES DATA CHOSEN AND ALSO THE USER
+CAN INPUT DATE FROM-TO AND TIME FROM-TO
+
+f"""
+SELECT [Current_Time], {string_for_query} 
+FROM [IN23_Plant].[dbo].[General_Table]
+WHERE [Current_Time] >= '2025-01-01 10:00:00' AND [Current_Time] <= '2025-01-02 17:00:00'
+ORDER BY [Current_Time] ASC
+"""
+--------------------------------------------------------------------------------------------------------------------------------------------

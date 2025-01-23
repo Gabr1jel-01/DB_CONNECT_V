@@ -2,4 +2,4 @@
 
 maxUploadSize = 1000
 maxMessageSize = 1000
-disconnectedSessionTTL = 120
+disconnectedSessionTTL = 12000

@@ -23,7 +23,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-
+# ove globalne varijable mozda necu morati koristiti
 CHOSEN_PILLS = []
 
 SPECIFIC_DATE_FROM = ""
@@ -31,7 +31,7 @@ SPECIFIC_TIME_FROM = ""
 SPECIFIC_DATE_TO = ""
 SPECIFIC_TIME_TO = ""
 
-SPECIFIC_QUERY = "zuzguzg"
+SPECIFIC_QUERY = ""
 
 
     
@@ -45,10 +45,64 @@ if "time_to" not in st.session_state:
     st.session_state.time_to = None
 
 
-@st.cache_data
-def display_file_in_a_table(data_to_be_displayed):
-    st.dataframe(data_to_be_displayed)
 
+def reset_filters():
+
+    if "time_to" in st.session_state:
+        st.session_state.time_to = None
+    if "time_from" in st.session_state:
+        st.session_state.time_from = None
+    if "date_to" in st.session_state:
+        st.session_state.date_to = None
+    if "date_from" in st.session_state:
+        st.session_state.date_from = None
+
+
+
+    if "first_group_of_pills" in st.session_state:
+        st.session_state.first_group_of_pills = []
+    else:
+        pass
+    if "second_group_of_pills" in st.session_state:
+        st.session_state.second_group_of_pills = []
+    else:
+        pass
+    if "third_group_of_pills" in st.session_state:
+        st.session_state.third_group_of_pills = []
+    else:
+        pass
+    if "fourth_group_of_pills" in st.session_state:
+        st.session_state.fourth_group_of_pills = []
+    else:
+        pass
+    if "fifth_group_of_pills" in st.session_state:
+        st.session_state.fifth_group_of_pills = []
+    else:
+        pass
+    if "sixth_group_of_pills" in st.session_state:
+        st.session_state.sixth_group_of_pills = []
+    else:
+        pass
+    if "seventh_group_of_pills" in st.session_state:
+        st.session_state.seventh_group_of_pills = []
+    else:
+        pass
+    if "eight_group_of_pills" in st.session_state:
+        st.session_state.eight_group_of_pills = []
+    else:
+        pass
+    if "ninth_group_of_pills" in st.session_state:
+        st.session_state.ninth_group_of_pills = []
+    else:
+        pass
+    if "tenth_group_of_pills" in st.session_state:
+        st.session_state.tenth_group_of_pills = []
+    else:
+        pass
+    if "dataframe" in st.session_state:
+        st.session_state.dataframe = None
+
+# ovo mozda necu trebati koristiti
 def append_date_from():
     SPECIFIC_DATE_FROM = st.session_state.date_from
     print(SPECIFIC_DATE_FROM)
@@ -73,12 +127,9 @@ with st.sidebar:
     sidebar_image = st.image("image.png")
     sidebar_logo = st.logo("LOGO.png",size="large")
 
-
-    st.title("File:")
-    file_uploader_dragNdrop = st.file_uploader("Choose a file to upload:")
     st.divider()
     st.subheader("To download the latest table of readings simply click the :red[GET LATEST READINGS] button below")
-    button_get_latest_readings = st.button("GET LATEST READINGS", type="primary", on_click=backend.data_extraction)
+    button_get_latest_readings = st.button("GET LATEST READINGS", type="primary", on_click=backend.extract_all_data)
     
     st.divider()
     #endregion
@@ -92,8 +143,8 @@ with st.sidebar:
         date_input_date_picker_from = st.date_input("From",
                                                 format="DD-MM-YYYY",
                                                 key="date_from",
-                                                value=st.session_state.date_from,
-                                                on_change= append_date_from)
+                                                value=st.session_state.date_from)
+                                                #on_change= append_date_from)
 
 
 
@@ -122,39 +173,19 @@ with st.sidebar:
     st.divider()
     #endregion
 
-    st.write(st.session_state)
+    
 
 
 
-if file_uploader_dragNdrop is not None:
-    dataframe = pd.read_csv(file_uploader_dragNdrop)
-    st.header("Line chart of selected data:")
-    df = pd.DataFrame({
-                        'x': range(10000),
-                        'y1': [i * 2 for i in range(10000)],
-                        'y2': [i * 3 for i in range(10000)],
-                        'y3': [i * 4 for i in range(10000)]})
-    # Reshape the DataFrame to long format         
-    df_melted = pd.melt(df, id_vars=['x'],var_name='variable', value_name='value')
-    # Create the line chart        
-    fig = px.line(         
-        df_melted,         
-        x='x',         
-        y='value',         
-        color='variable',  # Different lines for each variable
-    )
-    st.plotly_chart(fig)
-    st.divider()  
-    st.header("Table of loaded file:")
-    display_file_in_a_table(dataframe)
+
         
-else:
-        st.warning('To start, please load a file', icon="⚠️")
+
 
 
 
 with st.expander("Filters"):
-        column1, column2, column3, column4, column5, column6, column7, column8, column9, column10  = st.columns(10)
+        
+        pills_first_column,pills_second_column,pills_third_column,pills_fourth_column,pills_fifth_column,pills_sixth_column,pills_seventh_column,pills_eight_column,pills_ninth_column,pills_tenth_column  = st.columns(10)
         list_of_data_first_column = ["Total_Reactive_Energy"
                         ,"Energy_Total_Active_Power_L1L2L3"
                         ,"Energy_Total_Apparent_Power_L1L2L3"
@@ -278,30 +309,39 @@ with st.expander("Filters"):
                         ,"Syngas_H2S"]
       
 
-        with column1:
+        with pills_first_column:
             st.pills("a",selection_mode="multi",options=list_of_data_first_column,label_visibility="hidden",key="first_group_of_pills")
-            st.write(st.session_state.first_group_of_pills) # here I can see what pill has been chosen as it is appended to the session_state 
-                                                            # when clicked
-        with column2:
+        with pills_second_column:
             st.pills("b",selection_mode="multi",options=list_of_data_second_column,label_visibility="hidden",key="second_group_of_pills")
-        with column3:
+        with pills_third_column:
             st.pills("c",selection_mode="multi",options=list_of_data_third_column,label_visibility="hidden",key="third_group_of_pills")
-        with column4:
+        with pills_fourth_column:
             st.pills("d",selection_mode="multi",options=list_of_data_fourth_column,label_visibility="hidden",key="fourth_group_of_pills")
-        with column5:
+        with pills_fifth_column:
             st.pills("f",selection_mode="multi",options=list_of_data_fift_column,label_visibility="hidden",key="fifth_group_of_pills")
-        with column6:
+        with pills_sixth_column:
             st.pills("g",selection_mode="multi",options=list_of_data_sixth_column,label_visibility="hidden",key="sixth_group_of_pills")
-        with column7:
+        with pills_seventh_column:
             st.pills("h",selection_mode="multi",options=list_of_data_seventh_column,label_visibility="hidden",key="seventh_group_of_pills")
-        with column8:
+        with pills_eight_column:
             st.pills("j",selection_mode="multi",options=list_of_data_eighth_column,label_visibility="hidden",key="eight_group_of_pills")
-        with column9:
+        with pills_ninth_column:
             st.pills("k",selection_mode="multi",options=list_of_data_ninth_column,label_visibility="hidden",key="ninth_group_of_pills")
-        with column10:
+        with pills_tenth_column:
             st.pills("l",selection_mode="multi",options=list_of_data_tenth_column,label_visibility="hidden",key="tenth_group_of_pills")
-        st.divider()
         
-        button_generate = st.button("GENERATE", type="primary")
+        st.divider()
 
-st.table()
+        button_generate_column, button_reset_filters_column = st.columns([1,9])
+        with button_generate_column:
+            button_generate = st.button("GENERATE", type="primary", on_click=backend.extract_specific_data_withouth_date_and_time)
+        with button_reset_filters_column:
+            button_reset_filters = st.button("RESET FILTERS", type="primary",on_click=reset_filters)
+
+
+if "dataframe" not in st.session_state:
+    st.session_state.dataframe = pd.DataFrame()
+
+
+
+st.write(st.session_state)

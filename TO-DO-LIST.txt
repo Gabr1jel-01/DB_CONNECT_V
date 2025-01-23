@@ -1,28 +1,26 @@
 NAPRAVITI:
 
-[2] Napraviti skidanje određenih podataka, u određeno vrijeme za određeni datum. Vrlo je bitno da se podatci uzeti iz tablice skidaju
-   u nekom redu, znači ili ascending ili descending. To se mora specificirati dok se radi SQL Query upit jer ako se u upitu ne stavi taj filter
-   podaci će se skidati nasumično te neće biti organizirani kako trebaju.
-[1] Filtere napraviti kao u Excelu. Treba sadržavati checkbox za sve varijable i glavni checkbox mora odraditi funkciju da se sve varijable odaberu
-   ili ponište za odabir.
-[3] Napraviti da se file prilikom preuzimanja automatski sprema na Windows C Download folder. Provjeriti dali je to foolproof za sva računala.
-[4] Napraviti da se graf mijenja po filterima, također napraviti isto kao i u Excelu. - Trenutno graf pokazuje neke random podatke,  
+
+
+[2] Kada user skine podatke ne spremam ih u excel nego ih automatski prikazujem na webu.
+[3] Napraviti da se graf mijenja po filterima, također napraviti isto kao i u Excelu. - Trenutno graf pokazuje neke random podatke,  
    trebam napravitri da prikazuje sve varijable koje su u skinutoj tablici. 
-[4.1] Napraviti da tablica prikazuje podatke po filteru, također napraviti kao u Excelu.
+[4] Napraviti da tablica prikazuje podatke po filteru, također napraviti kao u Excelu.
 [5] Promijeniti nazive varijabli. Trenutni nazivi nisu dobri za ono što nama treba. Dogovoriti se sa Filipom da napravimo kratki sastanak sa svima kako bi se sve dogovorili.
-[6] Za odredeno vrijeme i odredeni dan skidam cijelu tablicu. Nakon toga postoji filter na stranici i na osnovu onoga 
-    sto je oznaceno u tablici filtera prikazuje se u tablici.
+[6] Moram maknuti sifre za logiranje u server jer to ne smije biti vidljivo na repo-u.
+[7] Napraviti funkciju koja skida svu datu, ali samo za odredeni datum i vrijeme bez odabira varijabli kroz filter.
+[8] Optimizacija aplikacije: pogledati cache state i ostale stvari kako bih ubrzao aplikaciju. Svaki puta kada se desi neka promjena Streamlit
+    pokrene cijelu skriptu od početka što ne želim za sve jer to usporava aplikaciju....
 
 U PROCESU IZRADE:
 
-[...] Anđelina i netko od strojara treba reći koje im varijable trebaju za query upit.
+
 [...] Napravio Frontend do neke točke. Još se stvari dodaje tako da je sve podložno promjeni.
 [...] Branimir iz Probotike treba dodati mjerne jedinice pored svake varijable. (Anđelina zamolila).
 [...] Branimir iz Probotike treba dodati sekunde u mjerenju vremena Current_Time varijabla. - Rekao je da je to gotovo kroz tjedan dana.
 [...] Darko treba napraviti mogućnost spajanja na IN Wifi kako bih mogli pristupiti serveru neovisno o tome gdje se postrojenje nalazi
       u Republici Hrvatskoj.
-[...] Pitanje: skinuti cijelu tablicu pa onda prikazivati podatke po filtru ili prije skidanja podataka napraviti filter pa onda skinuti samo određene
-   podatke. - Za svaki filter skida se skade samo to iz databaze. Ne filtrira se po skinutoj tablici. Znaci imati cu vise querija tako da se to moram dogovoriti sa Filipom.
+
 
 NAPRAVLJENO:
 
@@ -34,3 +32,11 @@ NAPRAVLJENO:
 [X] Implementirana tablica koja pokazuje podatke skinute sa SQL servera.
 [X] Implementiran spinner koji se prikazuje sve dok se podaci skidaju sa servera te spremaju u .csv file.
 [X] Staviti datuum pa vrijeme i onda opet datum pa vrijeme radi same logike vizualno. Sada je trenutno datum pa datum pa vrijeme pa vrijeme. 
+[X] Filtere napraviti kao u Excelu. Treba sadržavati checkbox za sve varijable i glavni checkbox mora odraditi funkciju da se sve varijable odaberu
+   ili ponište za odabir.
+[X] Napraviti skidanje određenih podataka, u određeno vrijeme za određeni datum. Vrlo je bitno da se podatci uzeti iz tablice skidaju
+    u nekom redu, znači ili ascending ili descending. To se mora specificirati dok se radi SQL Query upit jer ako se u upitu ne stavi taj filter
+    podaci će se skidati nasumično te neće biti organizirani kako trebaju.
+[X] Pitanje: skinuti cijelu tablicu pa onda prikazivati podatke po filtru ili prije skidanja podataka napraviti filter pa onda skinuti samo određene
+      podatke. - Za svaki filter skida sa Scade samo to iz databaze. Ne filtrira se po skinutoj tablici.
+[X] Filtere napraviti kao u Excelu. Dodati checkbox da se odznače sve varijable koje su označene.
