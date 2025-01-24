@@ -7,17 +7,17 @@ import pandas as pd
 import time 
 import pyodbc
 
+
 st.markdown(
     """
     <style>
     .block-container {
-        padding-top: 2.8rem;
+        padding-top: 5rem;
         padding-right: 2rem;
         padding-left: 2rem;
         max-width: 90%;
         margin-left: auto;
-        margin-right: auto;
-    }
+        margin-right: auto;}
     </style>
     """,
     unsafe_allow_html=True
@@ -48,14 +48,7 @@ if "time_to" not in st.session_state:
 
 def reset_filters():
 
-    if "time_to" in st.session_state:
-        st.session_state.time_to = None
-    if "time_from" in st.session_state:
-        st.session_state.time_from = None
-    if "date_to" in st.session_state:
-        st.session_state.date_to = None
-    if "date_from" in st.session_state:
-        st.session_state.date_from = None
+    
 
 
 
@@ -102,7 +95,16 @@ def reset_filters():
     if "dataframe" in st.session_state:
         st.session_state.dataframe = None
 
-# ovo mozda necu trebati koristiti
+def reset_time_and_date():
+    if "time_to" in st.session_state:
+        st.session_state.time_to = None
+    if "time_from" in st.session_state:
+        st.session_state.time_from = None
+    if "date_to" in st.session_state:
+        st.session_state.date_to = None
+    if "date_from" in st.session_state:
+        st.session_state.date_from = None
+
 def append_date_from():
     SPECIFIC_DATE_FROM = st.session_state.date_from
     print(SPECIFIC_DATE_FROM)
@@ -121,7 +123,6 @@ def append_time_to():
 
 
 
-
 with st.sidebar:
     
     sidebar_image = st.image("image.png")
@@ -130,7 +131,11 @@ with st.sidebar:
     st.divider()
     st.subheader("To download the latest table of readings simply click the :red[GET LATEST READINGS] button below")
     button_get_latest_readings = st.button("GET LATEST READINGS", type="primary", on_click=backend.extract_all_data)
-    
+    if "download_csv" in st.session_state:
+        st.download_button(label="DOWNLOAD DATA AS CSV",
+                           data=st.session_state.download_csv,
+                           file_name=f"Readings_CSV",
+                           mime="text/csv")
     st.divider()
     #endregion
 
@@ -143,8 +148,8 @@ with st.sidebar:
         date_input_date_picker_from = st.date_input("From",
                                                 format="DD-MM-YYYY",
                                                 key="date_from",
-                                                value=st.session_state.date_from)
-                                                #on_change= append_date_from)
+                                                value=st.session_state.date_from,
+                                                on_change= append_date_from)
 
 
 
@@ -153,7 +158,7 @@ with st.sidebar:
                                             key="date_to",
                                             value=None,
                                             on_change= append_date_to)
-
+        button_download = st.button("DOWNLOAD", type="primary")
         
     with second_column:
         time_input_time_picker_from = st.time_input("From:",
@@ -168,20 +173,22 @@ with st.sidebar:
                                                 on_change= append_time_to)
     
 
-    button_download = st.button("DOWNLOAD", type="primary")
+        reset_date_and_time_button = st.button("RESET", type="primary", on_click= reset_time_and_date)
+
 
     st.divider()
     #endregion
 
-    
 
 
 
+if "table_data" not in st.session_state:
+    st.session_state.table_data = pd.DataFrame()
 
-        
-
-
-
+if st.session_state.table_data.empty:
+        st.write("No data available to display.")
+else:
+    st.dataframe(st.session_state.table_data, use_container_width=True)
 
 with st.expander("Filters"):
         
@@ -337,11 +344,6 @@ with st.expander("Filters"):
             button_generate = st.button("GENERATE", type="primary", on_click=backend.extract_specific_data_withouth_date_and_time)
         with button_reset_filters_column:
             button_reset_filters = st.button("RESET FILTERS", type="primary",on_click=reset_filters)
-
-
-if "dataframe" not in st.session_state:
-    st.session_state.dataframe = pd.DataFrame()
-
 
 
 st.write(st.session_state)
