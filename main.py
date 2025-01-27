@@ -7,6 +7,7 @@ import pandas as pd
 import time 
 import pyodbc
 
+st.set_page_config(page_title="dbConnectV")
 
 st.markdown(
     """
