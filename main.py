@@ -18,6 +18,10 @@ st.markdown(
         max-width: 90%;
         margin-left: auto;
         margin-right: auto;}
+    
+    section[data-testid="stSidebar"] {
+            width: 100% !important;
+    
     </style>
     """,
     unsafe_allow_html=True
