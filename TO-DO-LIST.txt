@@ -8,6 +8,8 @@ NAPRAVITI:
 [5] Napraviti funkciju koja skida svu datu, ali samo za odredeni datum i vrijeme bez odabira varijabli kroz filter.
 [6.1] Optimizacija aplikacije: pogledati cache state i ostale stvari kako bih ubrzao aplikaciju. Svaki puta kada se desi neka promjena Streamlit
     pokrene cijelu skriptu od početka što ne želim za sve jer to usporava aplikaciju....
+[7.1] Dodati autentifikaciju. streamlit-authenticator
+
 
 U PROCESU IZRADE:
 
@@ -16,6 +18,7 @@ U PROCESU IZRADE:
 [...] Branimir iz Probotike treba dodati sekunde u mjerenju vremena Current_Time varijabla. - Rekao je da je to gotovo kroz tjedan dana.
 [...] Darko treba napraviti mogućnost spajanja na IN Wifi kako bih mogli pristupiti serveru neovisno o tome gdje se postrojenje nalazi
       u Republici Hrvatskoj.
+
 
 
 NAPRAVLJENO:
@@ -38,3 +41,4 @@ NAPRAVLJENO:
 [X] Filtere napraviti kao u Excelu. Dodati checkbox da se odznače sve varijable koje su označene.
 [X] Napraviti da tablica prikazuje podatke po filteru, također napraviti kao u Excelu.
 [X] Za prikazivanje date na web aplikaciji, datu ne spremati u csv negho koristiti onu koja je vec spremljena u privremenu memoriju.
+[X] Riješiti problem sa driverom kod deploay aplikacije.

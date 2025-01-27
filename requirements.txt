@@ -3,3 +3,6 @@ plotly.express
 datetime
 pyodbc
 sqlalchemy
+pyodbc
+unixodbc
+unixodbc-dev
