@@ -4,5 +4,4 @@ datetime
 pyodbc
 sqlalchemy
 pyodbc
-unixodbc
-unixodbc-dev
+
