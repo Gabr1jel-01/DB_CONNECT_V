@@ -28,7 +28,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# ove globalne varijable mozda necu morati koristiti
+
 CHOSEN_PILLS = []
 
 SPECIFIC_DATE_FROM = ""
@@ -38,8 +38,9 @@ SPECIFIC_TIME_TO = ""
 
 SPECIFIC_QUERY = ""
 
-
-    
+if "csv_data" not in st.session_state:
+    st.session_state.csv_data = None
+     
 if "date_from" not in st.session_state:
     st.session_state.date_from = None
 if "date_to" not in st.session_state:
@@ -49,14 +50,10 @@ if "time_from" not in st.session_state:
 if "time_to" not in st.session_state:
     st.session_state.time_to = None
 
-
+def convert_to_csv(df):
+    return df.to_csv(df)
 
 def reset_filters():
-
-    
-
-
-
     if "first_group_of_pills" in st.session_state:
         st.session_state.first_group_of_pills = []
     else:
@@ -136,13 +133,9 @@ with st.sidebar:
     st.divider()
     st.subheader("To download the latest table of readings simply click the :red[GET LATEST READINGS] button below")
     button_get_latest_readings = st.button("GET LATEST READINGS", type="primary", on_click=backend.extract_all_data)
-    if "download_csv" in st.session_state:
-        st.download_button(label="DOWNLOAD DATA AS CSV",
-                           data=st.session_state.download_csv,
-                           file_name=f"Readings_CSV",
-                           mime="text/csv")
+    
     st.divider()
-    #endregion
+    
 
 
     #region DOWNLOAD CUSTOM TIME AND DATE FROM THE TABLE
@@ -162,8 +155,7 @@ with st.sidebar:
                                             format="DD-MM-YYYY",
                                             key="date_to",
                                             value=None,
-                                            on_change= append_date_to)
-        button_download = st.button("DOWNLOAD", type="primary")
+                                            on_change= append_date_to)        
         
     with second_column:
         time_input_time_picker_from = st.time_input("From:",
@@ -184,16 +176,15 @@ with st.sidebar:
     st.divider()
     #endregion
 
-
-
-
 if "table_data" not in st.session_state:
     st.session_state.table_data = pd.DataFrame()
 
 if st.session_state.table_data.empty:
-        st.write("No data available to display.")
+        st.write("⚠️ No data available to display. ⚠️")
 else:
     st.dataframe(st.session_state.table_data, use_container_width=True)
+
+
 
 with st.expander("Filters"):
         
@@ -346,9 +337,10 @@ with st.expander("Filters"):
 
         button_generate_column, button_reset_filters_column = st.columns([1,9])
         with button_generate_column:
-            button_generate = st.button("GENERATE", type="primary", on_click=backend.extract_specific_data_withouth_date_and_time)
+            button_generate = st.button("GENERATE", type="primary", on_click=backend.extract_specific_data_without_date_and_time)
         with button_reset_filters_column:
             button_reset_filters = st.button("RESET FILTERS", type="primary",on_click=reset_filters)
+
 
 
 st.write(st.session_state)

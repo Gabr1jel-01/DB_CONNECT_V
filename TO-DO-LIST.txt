@@ -17,7 +17,7 @@ U PROCESU IZRADE:
 [...] Branimir iz Probotike treba dodati mjerne jedinice pored svake varijable. (Anđelina zamolila).
 [...] Branimir iz Probotike treba dodati sekunde u mjerenju vremena Current_Time varijabla. - Rekao je da je to gotovo kroz tjedan dana.
 [...] Darko treba napraviti mogućnost spajanja na IN Wifi kako bih mogli pristupiti serveru neovisno o tome gdje se postrojenje nalazi
-      u Republici Hrvatskoj.
+      u Republici Hrvatskoj. Dosao je uređaj, sada ga treba samo spojiti.
 
 
 
