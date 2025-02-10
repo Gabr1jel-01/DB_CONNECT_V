@@ -1,6 +1,7 @@
 streamlit  
 plotly.express
 datetime
-pyodbc
+pyodbc==5.1.0
 sqlalchemy
 pyodbc
+

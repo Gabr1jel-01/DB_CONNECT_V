@@ -1,0 +1,18 @@
+DOWNLOADS
+1. Download all data as a CSV file.
+2. Filter data for downloading by only time and date.
+3. Filter data for downloading by time, date and variables. 
+4. Filter data for downloading by only variables.
+
+
+DISPLAY DATA IN A TABLE
+1. Show all data in a table???
+2. Show data in a table filtered by time and date.
+3. Shot data in a table filtered by time, date and variables.
+4. Show data in a table filtered by variables only.
+
+DISPLAY DATA IN A GRAPH
+1. Show all data in a graph???
+2. Show data in a graph filtered by time and date.
+3. Shot data in a graph filtered by time, date and variables.
+4. Show data in a graph filtered by variables only.
