@@ -22,10 +22,10 @@ def extract_all_data():
 
     with st.spinner(text=" Fetching data...This may take up to a few minutes..."):
         
-        server = r"SCADA_POTRESI\WINCC"  # server IP or hostname
-        database = "IN23_Plant"  # database name
-        username = "remote_login"  # username is added to the SQL Server logins
-        password = "1"  # password is for the username that is added in the SQL Server login
+        server = r"******"  # server IP or hostname
+        database = "******"  # database name
+        username = "******"  # username is added to the SQL Server logins
+        password = "******"  # password is for the username that is added in the SQL Server login
 
         query = """SELECT * FROM [IN23_Plant].[dbo].[General_Table] ORDER BY [Current_Time] ASC"""
 
